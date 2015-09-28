@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\PlayerController.cs">
+    <Files>
+      <File FileName="Assets\Resources\Scripts\GameManager.cs" Line="68" Column="3" />
+      <File FileName="Assets\Resources\Scripts\StageManager.cs" Line="54" Column="37" />
+      <File FileName="Assets\Resources\Scripts\StageController.cs" Line="18" Column="36" />
+      <File FileName="Assets\Resources\Scripts\RockController.cs" Line="18" Column="69" />
+      <File FileName="Assets\Resources\Scripts\ItemController.cs" Line="16" Column="71" />
+      <File FileName="Assets\Resources\Scripts\PlayerController.cs" Line="6" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
