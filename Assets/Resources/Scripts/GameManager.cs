@@ -36,13 +36,23 @@ public class GameManager : MonoBehaviour {
 	GameObject btnGameStart;
 	[SerializeField]
 	GameObject btnHowtoplay;
+	[SerializeField]
+	AudioClip destroySe;
+	[SerializeField]
+	GameObject bgmaudio;
+	[SerializeField]
+	AudioClip kettei;
+	[SerializeField]
+	AudioClip border;
 
 	UIManager uimana;
 	int scoreBorder = 1000;
 	int challengeCount = 0;
+	AudioSource audiosouces;
 	
 	void Start () 
 	{
+		audiosouces = this.GetComponent<AudioSource> ();
 		bestScore = PlayerPrefs.GetInt ("bestscore");
 		if (Application.loadedLevelName == "top") 
 		{
@@ -84,6 +94,7 @@ public class GameManager : MonoBehaviour {
 		}
 		if (score == scoreBorder) 
 		{
+			audiosouces.PlayOneShot(border);
 			GameObject sb = canvas.transform.FindChild("scoreborder").gameObject;
 			sb.SetActive(true);
 			scoreBotderText.text = scoreBorder + "m";
@@ -92,6 +103,7 @@ public class GameManager : MonoBehaviour {
 	}
 	public void GameOver()
 	{
+		bgmaudio.SetActive (false);
 		cAnim.SetTrigger ("gameover");
 		PlayerPrefs.SetInt ("bestscore", bestScore);
 		PlayerPrefs.SetInt ("challengecount", challengeCount);
@@ -100,8 +112,9 @@ public class GameManager : MonoBehaviour {
 
 	public void GameRestart()
 	{
-		Application.LoadLevel ("main");
+		audiosouces.PlayOneShot (kettei);
 		stagemanager.stgSpd = 39f * Time.deltaTime;
+		Application.LoadLevel ("main");
 	}
 
 	public IEnumerator GameCountDown()
@@ -114,6 +127,7 @@ public class GameManager : MonoBehaviour {
 	}
 	public IEnumerator ResultOn()
 	{
+		audiosouces.PlayOneShot (destroySe);
 		uimana.UIactivater ("matt_score", false);
 		uimana.UIactivater ("score", false);
 		uimana.UIactivater ("bestScore", false);
@@ -149,21 +163,25 @@ public class GameManager : MonoBehaviour {
 	}
 	public void GameStart()
 	{
+		audiosouces.PlayOneShot (kettei);
 		Application.LoadLevel("main");
 	}
 	public void BackHome()
 	{
+		audiosouces.PlayOneShot (kettei);
 		Application.LoadLevel("top");
 	}
 
 	public void howtoplayactivator()
 	{
+		audiosouces.PlayOneShot (kettei);
 		howtoplay.SetActive (true);
 		btnGameStart.SetActive (false);
 		btnHowtoplay.SetActive (false);
 	}
 	public void howtoplaycloser()
 	{
+		audiosouces.PlayOneShot (kettei);
 		btnGameStart.SetActive (true);
 		btnHowtoplay.SetActive(true);
 		howtoplay.SetActive (false);

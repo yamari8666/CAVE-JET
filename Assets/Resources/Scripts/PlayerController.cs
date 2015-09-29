@@ -12,16 +12,26 @@ public class PlayerController : MonoBehaviour {
 	GameObject parBoost;
 	[SerializeField]
 	GameObject parBarrier;
+	[SerializeField]
+	AudioClip boostupper;
+	[SerializeField]
+	AudioClip speedUp;
+	[SerializeField]
+	AudioClip barrierUp;
+	[SerializeField]
+	AudioClip breakSe;
 
 	GameObject gm;
 	GameManager gmgm;
 	StageManager gmsm;
 	GameObject efCrashOb;
+	AudioSource audiosource;
 	public bool brSwitch = false;
 
 	// Use this for initialization
 	void Start () 
 	{
+		audiosource = this.GetComponent<AudioSource> ();
 		pRg = this.GetComponent<Rigidbody> ();
 		parOver.SetActive (false);
 		parForward.SetActive (true);
@@ -42,11 +52,17 @@ public class PlayerController : MonoBehaviour {
 		}else
 		if (gmgm.pSwitch == true) {
 			pRg.isKinematic = false;
-			if (Input.GetMouseButton (0)) {
+			if(Input.GetMouseButtonDown(0))
+			{
+				audiosource.PlayOneShot(boostupper);
+			}
+			if (Input.GetMouseButton (0)) 
+			{
 				pRg.AddForce (0, powUp * Time.deltaTime, 0, ForceMode.Impulse);
 				parOver.SetActive (true);
 			}
-			if (Input.GetMouseButtonUp (0)) {
+			if (Input.GetMouseButtonUp (0)) 
+			{
 				parOver.SetActive (false);
 			}
 		}
@@ -57,11 +73,12 @@ public class PlayerController : MonoBehaviour {
 			gmgm.pSwitch = false;
 			Vector3 myPos = this.transform.position;
 			Instantiate (Resources.Load ("Prefabs/ef_explo"), myPos, Quaternion.identity);
-			this.gameObject.SetActive (false);
 			gmsm.stgSpd = gmsm.stgSpd /2f;
 			gmgm.GameOver();
+			this.gameObject.SetActive (false);
 		} else if(gmsm.invSwitch == true && col.gameObject.tag == "obstacle")
 		{
+			audiosource.PlayOneShot(breakSe);
 			GameObject c = Instantiate(efCrashOb,col.transform.position,Quaternion.identity) as GameObject;
 			c.AddComponent<Destroyer>();
 			c.GetComponent<Destroyer>().dtimer = 2f;
@@ -86,11 +103,13 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter(Collider cor)
 	{
 		if (cor.gameObject.tag == "Item_boost") {
+			audiosource.PlayOneShot(speedUp);
 			IEnumerator spu = gmsm.SpeedUp (2.0f, 4.0f, 2);
 			gmsm.StartCoroutine (spu);
 		} else
 		if (cor.gameObject.tag == "Item_barrier") 
 		{
+			audiosource.PlayOneShot(barrierUp);
 			StartCoroutine("Barrier");
 		}
 		Destroy (cor.gameObject);
