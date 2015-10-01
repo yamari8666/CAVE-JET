@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{F088C4C3-946F-E7B3-E251-6B0486519FEF}") = "CAVE JET", "Assembly-CSharp-firstpass.csproj", "{251F66FE-0BB1-9C9C-3AB2-B57925FF01EF}"
+EndProject
 Project("{F088C4C3-946F-E7B3-E251-6B0486519FEF}") = "CAVE JET", "Assembly-CSharp.csproj", "{DE777621-7612-ABC3-62C9-99DC03DD8F61}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{251F66FE-0BB1-9C9C-3AB2-B57925FF01EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{251F66FE-0BB1-9C9C-3AB2-B57925FF01EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{251F66FE-0BB1-9C9C-3AB2-B57925FF01EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{251F66FE-0BB1-9C9C-3AB2-B57925FF01EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE777621-7612-ABC3-62C9-99DC03DD8F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE777621-7612-ABC3-62C9-99DC03DD8F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE777621-7612-ABC3-62C9-99DC03DD8F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -17,7 +23,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
+																																																GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
