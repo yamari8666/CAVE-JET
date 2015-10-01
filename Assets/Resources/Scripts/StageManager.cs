@@ -6,7 +6,7 @@ public class StageManager : MonoBehaviour {
 	public float bunPos;
 	public float resPos;
 
-	GameObject[] stg = new GameObject[7];
+	GameObject[] stg = new GameObject[8];
 	GameObject stage;
 	float stageDepth;
 
@@ -18,7 +18,7 @@ public class StageManager : MonoBehaviour {
 	public float invtime = 0;
 
 	void Start () {
-		Vector3 stgPos = new Vector3(0,0,-30);
+		Vector3 stgPos = new Vector3(0,0,-60);
 		for (int i = 0; i <= stg.Length-1; i++)
 		{
 			stg[i] = Instantiate (Resources.Load("Models/stage/stage"), stgPos, Quaternion.identity) as GameObject;
@@ -26,7 +26,7 @@ public class StageManager : MonoBehaviour {
 			{
 				stageDepth = stg[i].GetComponent<Renderer>().bounds.size.z;
 				bunPos = stg[i].transform.position.z + (stageDepth * -1);
-				resPos = stg[i].transform.position.z + (stageDepth * 6);
+				resPos = stg[i].transform.position.z + (stageDepth * stg.Length -1);
 			}
 			stgPos.z = stg[i].transform.position.z + stageDepth;
 		}
@@ -61,7 +61,7 @@ public class StageManager : MonoBehaviour {
 	}
 	public void StageReturn(GameObject s)
 	{
-		resPos = s.transform.position.z + (stageDepth * 7);
+		resPos = s.transform.position.z + (stageDepth * 8);
 		s.transform.position = new Vector3 (0f, 0f, resPos);
 	}
 }
